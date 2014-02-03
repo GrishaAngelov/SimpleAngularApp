@@ -1,0 +1,32 @@
+<!DOCTYPE html> 
+<html ng-app="myApp">
+  <head>
+      <script src="angular.js"></script>
+      
+      <script src="controllers.js"></script>
+
+
+  </head>
+
+  <body>
+   
+   <div ng-controller="StudentMarksCtrl">
+    <div ng-repeat="student in students">
+      {{student.name}} - {{student.marks}}
+    </div>
+  </div>
+
+  <div ng-controller="StudentInfoCtrl">
+    {{showStudentInfo("Kelly",["math:4.60","chemistry:5.00"])}}
+
+  </div>
+
+  <div ng-controller="UniversityCtrl">
+    {{showUniInfo()}}
+  </div>
+
+  <div uniaddr></div>
+
+
+  </body>
+</html>
