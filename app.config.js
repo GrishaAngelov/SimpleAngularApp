@@ -5,8 +5,8 @@ module.exports = function(karma){
         frameworks: ['jasmine'],
 
 // list of files / patterns to load in the browser
+// NOTE: angular.js should be first element, followed by angular-mocks.js
         files: [
-
            'angular.js',
            'angular-mocks.js',
            "*.spec.js",
