@@ -3,18 +3,17 @@ describe("sampletests",function(){
     var rootScope;
     var compile;
 
-	beforeEach(module("myApp")); // Load the myApp module
+    beforeEach(module("myApp")); // Load the myApp module
 
-    // underscores are necessary only for $controller
-    beforeEach(inject(function(_$controller_,$rootScope,$compile){
-        controller = _$controller_;
+    beforeEach(inject(function($controller,$rootScope,$compile){
+        controller = $controller;
         rootScope = $rootScope;
         compile = $compile;
     }));
 
     it('should test StudentMarksCtrl',function(){
     	var $scope = {};
-    	var studentMarksCtrl = controller('StudentMarksCtrl',{$scope:$scope});
+    	controller('StudentMarksCtrl',{$scope:$scope});
     	expect($scope.students.length).toEqual(2);
     	expect($scope.students[0].name).toEqual("Peter");
     	expect($scope.students[1].name).toEqual("John");
@@ -23,7 +22,7 @@ describe("sampletests",function(){
     it('should test StudentInfoCtrl',function(){
         //NOTE: not so obvious way to set custom scope variable as controller scope
     	var $scope = {};
-    	var studentMarksCtrl = controller('StudentInfoCtrl',{$scope:$scope});
+    	controller('StudentInfoCtrl',{$scope:$scope});
     	var info = $scope.showStudentInfo("Kelly",["math:4.50","bio:5.50"]);
     	expect(info).toEqual("Kelly-math:4.50,bio:5.50");
     });
@@ -31,7 +30,7 @@ describe("sampletests",function(){
     it('should test UniversityCtrl',(function(){
         //NOTE: more comprehensive way to set custom scope variable as controller scope
         var controllerScope = rootScope.$new();
-    	var studentMarksCtrl = controller('UniversityCtrl',{$scope:controllerScope});
+    	controller('UniversityCtrl',{$scope:controllerScope});
     	var info = controllerScope.showUniInfo();
     	expect(info).toEqual("University Name: Software University");
     }));
